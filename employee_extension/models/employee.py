@@ -26,23 +26,42 @@ class HrEmployee(models.Model):
 
     def compute_rpn_values(self):
         for emp in self:
-            rpn_id = emp.rpn_ids[0]
-            emp.effective_date = rpn_id.effective_date
-            emp.end_date = rpn_id.end_date
-            emp.usc_yearly_cut_off_1 = rpn_id.usc_yearly_cut_off_1
-            emp.usc_yearly_cut_off_2 = rpn_id.usc_yearly_cut_off_2
-            emp.usc_yearly_cut_off_3 = rpn_id.usc_yearly_cut_off_3
-            emp.usc_yearly_cut_off_4 = rpn_id.usc_yearly_cut_off_4
-            emp.usc_yearly_rate_1 = rpn_id.usc_yearly_rate_1
-            emp.usc_yearly_rate_2 = rpn_id.usc_yearly_rate_2
-            emp.usc_yearly_rate_3 = rpn_id.usc_yearly_rate_3
-            emp.usc_yearly_rate_4 = rpn_id.usc_yearly_rate_4
-            emp.yearly_standard_tax = rpn_id.yearly_standard_tax
-            emp.yearly_top_tax = rpn_id.yearly_top_tax
-            emp.prsi_exempt = rpn_id.prsi_exempt
-            emp.yearly_tax_credits = rpn_id.yearly_tax_credits
-            emp.yearly_rate_cut_off = rpn_id.yearly_rate_cut_off
-            emp.prsi_class = rpn_id.prsi_class
+            rpn_id = emp.rpn_ids[0] if emp.rpn_ids else False
+            if rpn_id:
+                emp.effective_date = rpn_id.effective_date
+                emp.end_date = rpn_id.end_date
+                emp.usc_yearly_cut_off_1 = rpn_id.usc_yearly_cut_off_1
+                emp.usc_yearly_cut_off_2 = rpn_id.usc_yearly_cut_off_2
+                emp.usc_yearly_cut_off_3 = rpn_id.usc_yearly_cut_off_3
+                emp.usc_yearly_cut_off_4 = rpn_id.usc_yearly_cut_off_4
+                emp.usc_yearly_rate_1 = rpn_id.usc_yearly_rate_1
+                emp.usc_yearly_rate_2 = rpn_id.usc_yearly_rate_2
+                emp.usc_yearly_rate_3 = rpn_id.usc_yearly_rate_3
+                emp.usc_yearly_rate_4 = rpn_id.usc_yearly_rate_4
+                emp.yearly_standard_tax = rpn_id.yearly_standard_tax
+                emp.yearly_top_tax = rpn_id.yearly_top_tax
+                emp.prsi_exempt = rpn_id.prsi_exempt
+                emp.yearly_tax_credits = rpn_id.yearly_tax_credits
+                emp.yearly_rate_cut_off = rpn_id.yearly_rate_cut_off
+                emp.prsi_class = rpn_id.prsi_class
+            else:
+                emp.effective_date = False
+                emp.end_date = False
+                emp.usc_yearly_cut_off_1 = ''
+                emp.usc_yearly_cut_off_2 = ''
+                emp.usc_yearly_cut_off_3 = ''
+                emp.usc_yearly_cut_off_4 = ''
+                emp.usc_yearly_rate_1 = ''
+                emp.usc_yearly_rate_2 = ''
+                emp.usc_yearly_rate_3 = ''
+                emp.usc_yearly_rate_4 = ''
+                emp.yearly_standard_tax = ''
+                emp.yearly_top_tax = ''
+                emp.prsi_exempt = ''
+                emp.yearly_tax_credits = ''
+                emp.yearly_rate_cut_off = ''
+                emp.prsi_class = ''
+
 
 
 class HrEmployeeRPN(models.Model):
