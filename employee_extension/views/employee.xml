@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page name="hr_employee_rpn" string="RPN">
+                <page name="hr_employee_rpn" string="Current RPN">
                     <group string="RPN">
                         <group>
                             <field name="ppsn"/>
@@ -20,6 +20,7 @@
                             <hr/>
                             <field name="yearly_standard_tax"/>
                             <field name="yearly_top_tax"/>
+                            <field name="prsi_exempt"/>
                         </group>
                         <group>
                             <field name="effective_date"/>
@@ -32,6 +33,7 @@
                             <hr/>
                             <field name="yearly_tax_credits"/>
                             <field name="yearly_rate_cut_off"/>
+                            <field name="prsi_class"/>
                         </group>
                     </group>
                 </page>
@@ -66,6 +68,7 @@
                                     <hr/>
                                     <field name="yearly_standard_tax"/>
                                     <field name="yearly_top_tax"/>
+                                    <field name="prsi_exempt"/>
                                 </group>
                                 <group>
                                     <field name="effective_date"/>
@@ -78,6 +81,7 @@
                                     <hr/>
                                     <field name="yearly_tax_credits"/>
                                     <field name="yearly_rate_cut_off"/>
+                                    <field name="prsi_class"/>
                                 </group>
                             </group>
                         </form>
